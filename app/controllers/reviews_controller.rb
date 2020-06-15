@@ -6,8 +6,9 @@ class ReviewsController < ApplicationController
     end
     
     def create
-        create_review = review_params.merge({user_id: logged_user.id})
-        @review = Review.create(create_review)
+        # create_review = review_params.merge({user_id: logged_user.id})
+        @review = logged_user.reviews.create(review_params)
+        # byebug
         render json: @review
     end
     
